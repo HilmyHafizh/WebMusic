@@ -1,0 +1,304 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  transition: 0.25s;
+}
+
+body {
+  background: #0f172a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ================= LAYOUT ================= */
+.app {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 220px;
+  background: #020617;
+  padding: 20px;
+  border-right: 1px solid #1e293b;
+}
+
+.logo {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+.menu {
+  margin: 12px 0;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.menu:hover,
+.menu.active {
+  color: white;
+  transform: translateX(5px);
+}
+
+/* ================= MAIN ================= */
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.main h2 {
+  margin-bottom: 15px;
+}
+
+/* SEARCH */
+#search {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1e293b;
+  color: white;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+#search::placeholder {
+  color: #94a3b8;
+}
+
+/* ================= PLAYLIST ================= */
+.playlist {
+  animation: fadeIn 0.3s ease;
+}
+
+.song {
+  background: #1e293b;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.song:hover {
+  background: #334155;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+
+/* ACTIVE SONG */
+.song.active {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  animation: pulse 2s infinite;
+}
+
+/* ================= PLAYER BAR ================= */
+.player-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background: #020617;
+  border-top: 1px solid #1e293b;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+}
+
+/* LEFT */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.left img {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+}
+
+.left img.playing {
+  animation: spin 8s linear infinite;
+}
+
+#title {
+  font-weight: bold;
+}
+
+#artist {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* CENTER */
+.center {
+  width: 40%;
+  text-align: center;
+}
+
+.center button {
+  margin: 0 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+.center button:hover {
+  background: #2563eb;
+}
+
+.center button:active {
+  transform: scale(0.9);
+}
+
+/* PROGRESS */
+#progress {
+  width: 100%;
+  margin-top: 12px;
+  appearance: none;
+  height: 5px;
+  border-radius: 10px;
+  background: #1e293b;
+}
+
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  box-shadow: 0 0 10px #3b82f6;
+}
+
+/* RIGHT */
+.right {
+  width: 120px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#volume {
+  width: 100px;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(59,130,246,0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(59,130,246,1);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgba(59,130,246,0.5);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .app {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 140px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #1e293b;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 20px;
+  }
+
+  .logo {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+
+  .menu {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  /* MAIN */
+  .main {
+    padding: 20px;
+  }
+
+  /* PLAYER */
+  .player-bar {
+    height: auto;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    align-items: stretch;
+  }
+
+  .left {
+    justify-content: center;
+  }
+
+  .center {
+    width: 100%;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #volume {
+    width: 100%;
+  }
+
+  .center button {
+    padding: 10px 14px;
+  }
+}

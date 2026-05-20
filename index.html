@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VibeMusic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <h1 class="logo">🎧 VibeMusic</h1>
+    <nav>
+      <p class="menu active" onclick="showAll()">Home</p>
+      <p class="menu" onclick="showFavorites()">Favorites</p>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <h2>Playlist</h2>
+    <input type="text" id="search" placeholder="Search song..." />
+    <div id="playlist" class="playlist"></div>
+  </main>
+
+</div>
+
+<div class="player-bar">
+
+  <div class="left">
+    <img id="cover">
+    <div>
+      <p id="title">Title</p>
+      <span id="artist">Artist</span>
+    </div>
+  </div>
+
+  <div class="center">
+    <button onclick="prevSong()">⏮</button>
+    <button onclick="togglePlay()" id="playBtn">▶</button>
+    <button onclick="nextSong()">⏭</button>
+    <input type="range" id="progress">
+  </div>
+
+  <div class="right">
+    <input type="range" id="volume" min="0" max="1" step="0.01">
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
